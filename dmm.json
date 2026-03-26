@@ -3,7 +3,7 @@
   "module_id": "filemanager4dolibarr",
   "name": "File Manager for Dolibarr",
   "description": "Integrated web file manager for Dolibarr with automatic authentication and comprehensive file management.",
-  "author": "AnatoleConseil.com",
+  "author": "Nicolas - AnatoleConseil.com",
   "url": "https://anatoleconseil.com/",
   "license": "GPL-3.0",
   "dolibarr_module_id": 185151,
