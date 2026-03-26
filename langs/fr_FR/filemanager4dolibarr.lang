@@ -1,0 +1,77 @@
+# Copyright (C) 2025 SuperAdmin
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#
+# Generic
+#
+
+# Module label 'ModuleFilemanager4DolibarrName'
+ModuleFilemanager4DolibarrName = Gestionnaire de fichiers pour Dolibarr
+# Module description 'ModuleFilemanager4DolibarrDesc'
+ModuleFilemanager4DolibarrDesc = Gestionnaire de fichiers web intégré à Dolibarr. Gérez, téléversez, éditez et organisez vos fichiers serveur directement depuis l'interface Dolibarr.
+
+#
+# Admin page
+#
+Filemanager4DolibarrSetup = Configuration du gestionnaire de fichiers
+Filemanager4DolibarrSetupPage = Configurez les paramètres et permissions du gestionnaire de fichiers
+Filemanager4DolibarrSettings = Paramètres
+
+#
+# Setup page - Configuration options
+#
+# Field labels (displayed in setup form)
+FILEMANAGER4DOLIBARR_ALLOW_NON_ADMIN = Autoriser les utilisateurs non-administrateurs à accéder au gestionnaire de fichiers
+FILEMANAGER4DOLIBARR_ROOT_PATH = Chemin du répertoire racine
+FILEMANAGER4DOLIBARR_READONLY_MODE = Mode lecture seule
+FILEMANAGER4DOLIBARR_MAX_UPLOAD_SIZE = Taille maximale de téléversement (Mo)
+FILEMANAGER4DOLIBARR_EXCLUDE_ITEMS = Éléments exclus (séparés par des virgules)
+FILEMANAGER4DOLIBARR_USER_DIRECTORIES = Répertoires spécifiques par utilisateur
+FILEMANAGER4DOLIBARR_READONLY_USERS = Utilisateurs en lecture seule
+
+# Help text (tooltips)
+Filemanager4DolibarrAllowNonAdminHelp = Autoriser les utilisateurs non-administrateurs à accéder au gestionnaire de fichiers (nécessite les permissions appropriées)
+Filemanager4DolibarrRootPathHelp = Chemin du répertoire racine pour la navigation. Laisser vide pour utiliser la racine du serveur web. Utilisez des chemins absolus (ex: /var/www/html ou C:\inetpub\wwwroot)
+Filemanager4DolibarrReadonlyModeHelp = Activer le mode lecture seule pour empêcher les modifications, téléversements et suppressions de fichiers
+Filemanager4DolibarrMaxUploadSizeHelp = Taille maximale de téléversement de fichier en mégaoctets (Mo)
+Filemanager4DolibarrExcludeItemsHelp = Liste séparée par des virgules des chemins de fichiers ou dossiers à exclure de la navigation (relatifs au chemin racine). Exemple: temp,cache,.git
+Filemanager4DolibarrUserDirectoriesHelp = Associer des utilisateurs spécifiques à leurs propres répertoires. Format: utilisateur1:/chemin/vers/rep1,utilisateur2:/chemin/vers/rep2 (laisser vide pour que tous les utilisateurs voient le même chemin racine). Exemple: jean:/var/www/docs/jean,marie:/var/www/docs/marie
+Filemanager4DolibarrReadonlyUsersHelp = Liste séparée par des virgules des identifiants utilisateurs Dolibarr qui peuvent seulement visualiser/télécharger les fichiers (pas de modification/téléversement/suppression). Exemple: invite,lecteur,auditeur
+
+#
+# About page
+#
+AboutFilemanagerWhat = Qu'est-ce que TinyFileManager ?
+AboutFilemanagerWhatDesc = TinyFileManager est un gestionnaire de fichiers web simple, rapide et léger contenu dans un seul fichier PHP. Il fournit une interface web pour parcourir, téléverser, éditer et gérer les fichiers de votre serveur avec une interface intuitive.
+AboutFilemanagerIntegration = Intégration
+AboutFilemanagerIntegratedBy = Ce module a été intégré à Dolibarr par
+AboutFilemanagerFeatures = Fonctionnalités principales
+AboutFilemanagerFeature1 = Parcourir et gérer les fichiers et répertoires de votre serveur
+AboutFilemanagerFeature2 = Téléverser, télécharger, copier, déplacer et supprimer des fichiers
+AboutFilemanagerFeature3 = Créer et éditer des fichiers texte avec coloration syntaxique
+AboutFilemanagerFeature4 = Visualiser les images, PDF et autres documents en ligne
+AboutFilemanagerFeature5 = Créer des archives zip et extraire des fichiers compressés
+AboutFilemanagerFeature6 = Rechercher des fichiers par nom
+AboutFilemanagerLicense = Licence & Crédits
+AboutFilemanagerOriginal = TinyFileManager original
+AboutFilemanagerOriginalAuthor = Auteur : CCP Programmers (prasathmani)
+AboutFilemanagerOriginalLicense = Licence : GNU GPL v3
+AboutFilemanagerOriginalWebsite = Site web
+AboutFilemanagerIntegrationLicense = Cette intégration Dolibarr est également publiée sous licence GNU GPL v3
+
+#
+# Menu
+#
+FileManager = Gestionnaire de fichiers

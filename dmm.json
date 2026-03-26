@@ -1,0 +1,22 @@
+{
+  "schema_version": "1",
+  "module_id": "filemanager4dolibarr",
+  "name": "File Manager for Dolibarr",
+  "description": "Integrated web file manager for Dolibarr with automatic authentication and comprehensive file management.",
+  "author": "AnatoleConseil.com",
+  "url": "https://anatoleconseil.com/",
+  "license": "GPL-3.0",
+  "dolibarr_module_id": 185151,
+  "repository": "nikube/filemanager4dolibarr",
+  "compatibility": {
+    "0.x": {
+      "dolibarr_min": "18.0.0",
+      "dolibarr_max": "23.*",
+      "php_min": "7.1"
+    }
+  },
+  "dependencies": {
+    "modules": [],
+    "php_extensions": []
+  }
+}

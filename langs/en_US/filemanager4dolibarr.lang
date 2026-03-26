@@ -1,0 +1,77 @@
+# Copyright (C) 2025 SuperAdmin
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#
+# Generic
+#
+
+# Module label 'ModuleFilemanager4DolibarrName'
+ModuleFilemanager4DolibarrName = File Manager for Dolibarr
+# Module description 'ModuleFilemanager4DolibarrDesc'
+ModuleFilemanager4DolibarrDesc = Web-based file manager integrated into Dolibarr. Manage, upload, edit, and organize your server files directly from Dolibarr interface.
+
+#
+# Admin page
+#
+Filemanager4DolibarrSetup = File Manager Setup
+Filemanager4DolibarrSetupPage = Configure File Manager settings and permissions
+Filemanager4DolibarrSettings = Settings
+
+#
+# Setup page - Configuration options
+#
+# Field labels (displayed in setup form)
+FILEMANAGER4DOLIBARR_ALLOW_NON_ADMIN = Allow non-administrator users to access File Manager
+FILEMANAGER4DOLIBARR_ROOT_PATH = Root directory path
+FILEMANAGER4DOLIBARR_READONLY_MODE = Read-only mode
+FILEMANAGER4DOLIBARR_MAX_UPLOAD_SIZE = Maximum upload size (MB)
+FILEMANAGER4DOLIBARR_EXCLUDE_ITEMS = Excluded items (comma-separated)
+FILEMANAGER4DOLIBARR_USER_DIRECTORIES = User-specific directories
+FILEMANAGER4DOLIBARR_READONLY_USERS = Read-only users
+
+# Help text (tooltips)
+Filemanager4DolibarrAllowNonAdminHelp = Allow non-administrator users to access the File Manager (requires appropriate permissions)
+Filemanager4DolibarrRootPathHelp = Root directory path for file browsing. Leave empty to use server document root. Use absolute paths (e.g., /var/www/html or C:\inetpub\wwwroot)
+Filemanager4DolibarrReadonlyModeHelp = Enable read-only mode to prevent file modifications, uploads, and deletions
+Filemanager4DolibarrMaxUploadSizeHelp = Maximum file upload size in megabytes (MB)
+Filemanager4DolibarrExcludeItemsHelp = Comma-separated list of file or folder paths to exclude from browsing (relative to root path). Example: temp,cache,.git
+Filemanager4DolibarrUserDirectoriesHelp = Map specific users to their own directories. Format: username1:/path/to/dir1,username2:/path/to/dir2 (leave empty for all users to see same root path). Example: john:/var/www/docs/john,jane:/var/www/docs/jane
+Filemanager4DolibarrReadonlyUsersHelp = Comma-separated list of Dolibarr user logins who can only view/download files (no edit/upload/delete). Example: guest,viewer,auditor
+
+#
+# About page
+#
+AboutFilemanagerWhat = What is TinyFileManager?
+AboutFilemanagerWhatDesc = TinyFileManager is a simple, fast and small web-based file manager in a single PHP file. It provides a web interface to browse, upload, edit, and manage files on your server with an intuitive interface.
+AboutFilemanagerIntegration = Integration
+AboutFilemanagerIntegratedBy = This module was integrated into Dolibarr by
+AboutFilemanagerFeatures = Key Features
+AboutFilemanagerFeature1 = Browse and manage files and directories on your server
+AboutFilemanagerFeature2 = Upload, download, copy, move, and delete files
+AboutFilemanagerFeature3 = Create and edit text files with syntax highlighting
+AboutFilemanagerFeature4 = View images, PDFs, and other documents inline
+AboutFilemanagerFeature5 = Create zip archives and extract compressed files
+AboutFilemanagerFeature6 = Search files by name
+AboutFilemanagerLicense = License & Credits
+AboutFilemanagerOriginal = Original TinyFileManager
+AboutFilemanagerOriginalAuthor = Author: CCP Programmers (prasathmani)
+AboutFilemanagerOriginalLicense = License: GNU GPL v3
+AboutFilemanagerOriginalWebsite = Website
+AboutFilemanagerIntegrationLicense = This Dolibarr integration is also released under GNU GPL v3 license
+
+#
+# Menu
+#
+FileManager = File Manager
