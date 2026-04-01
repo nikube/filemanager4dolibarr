@@ -258,15 +258,15 @@ $CONFIG = json_encode(array(
 include $tfm_file;
 
 // Inject "Back to Dolibarr" button into TFM navbar (no modification to upstream tinyfilemanager.php)
-$dolibarr_url = DOL_URL_ROOT;
+$dolibarr_url = DOL_URL_ROOT ?: '/';
 echo '<script>
-document.addEventListener("DOMContentLoaded", function() {
+(function() {
 	var nav = document.querySelector(".main-nav .navbar-nav");
 	if (nav) {
 		var li = document.createElement("li");
 		li.className = "nav-item";
-		li.innerHTML = \'<a class="nav-link" href="' . dol_escape_js($dolibarr_url) . '" title="Dolibarr"><i class="fa fa-arrow-left"></i> Dolibarr</a>\';
+		li.innerHTML = \'<a class="nav-link" href="' . addslashes($dolibarr_url) . '" title="Dolibarr"><i class="fa fa-arrow-left"></i> Dolibarr</a>\';
 		nav.insertBefore(li, nav.firstChild);
 	}
-});
+})();
 </script>';
