@@ -231,15 +231,19 @@ $ip_ruleset = 'OFF'; // No IP restrictions - managed by Dolibarr
 $favicon_path = '';
 
 // === TRANSLATION ===
-// Set language based on Dolibarr
-$lang_config = 'en'; // Default
-if ($langs->defaultlang == 'fr_FR') {
-	$lang_config = 'fr';
-} elseif ($langs->defaultlang == 'es_ES') {
-	$lang_config = 'es';
-} elseif ($langs->defaultlang == 'de_DE') {
-	$lang_config = 'de';
-}
+// Map Dolibarr language to TinyFileManager language code (33 languages supported)
+$dolibarr_to_tfm = array(
+	'fr_FR' => 'fr', 'es_ES' => 'es', 'de_DE' => 'de', 'it_IT' => 'it',
+	'pt_PT' => 'pt_PT', 'pt_BR' => 'pt_BR', 'nl_NL' => 'nl', 'pl_PL' => 'pl',
+	'ro_RO' => 'ro', 'ru_RU' => 'ru', 'cs_CZ' => 'cz', 'sk_SK' => 'sk',
+	'sl_SI' => 'sl', 'hu_HU' => 'hu', 'el_GR' => 'gr', 'tr_TR' => 'tr',
+	'da_DK' => 'da', 'nb_NO' => 'no', 'fi_FI' => 'fi', 'sv_SE' => 'no',
+	'ja_JP' => 'ja', 'ko_KR' => 'ko', 'zh_CN' => 'zh-CN', 'zh_TW' => 'zh-TW',
+	'th_TH' => 'th', 'vi_VN' => 'vi', 'id_ID' => 'id', 'ar_SA' => 'Ar',
+	'fa_IR' => 'Fa', 'he_IL' => 'he', 'bn_BD' => 'bn', 'ca_ES' => 'ca',
+	'gl_ES' => 'gl', 'mn_MN' => 'mn_MN',
+);
+$lang_config = $dolibarr_to_tfm[$langs->defaultlang] ?? 'en';
 
 $CONFIG = json_encode(array(
 	'lang' => $lang_config,
@@ -252,3 +256,17 @@ $CONFIG = json_encode(array(
 // Include TinyFileManager
 // All configuration variables above will be used by TinyFileManager
 include $tfm_file;
+
+// Inject "Back to Dolibarr" button into TFM navbar (no modification to upstream tinyfilemanager.php)
+$dolibarr_url = DOL_URL_ROOT;
+echo '<script>
+document.addEventListener("DOMContentLoaded", function() {
+	var nav = document.querySelector(".main-nav .navbar-nav");
+	if (nav) {
+		var li = document.createElement("li");
+		li.className = "nav-item";
+		li.innerHTML = \'<a class="nav-link" href="' . dol_escape_js($dolibarr_url) . '" title="Dolibarr"><i class="fa fa-arrow-left"></i> Dolibarr</a>\';
+		nav.insertBefore(li, nav.firstChild);
+	}
+});
+</script>';
