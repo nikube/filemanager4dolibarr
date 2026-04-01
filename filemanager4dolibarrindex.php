@@ -257,16 +257,13 @@ $CONFIG = json_encode(array(
 // All configuration variables above will be used by TinyFileManager
 include $tfm_file;
 
-// Inject "Back to Dolibarr" button into TFM navbar (no modification to upstream tinyfilemanager.php)
+// Inject "Back to Dolibarr" link in navbar brand (no modification to upstream tinyfilemanager.php)
 $dolibarr_url = DOL_URL_ROOT ?: '/';
 echo '<script>
 (function() {
-	var nav = document.querySelector(".main-nav .navbar-nav");
-	if (nav) {
-		var li = document.createElement("li");
-		li.className = "nav-item";
-		li.innerHTML = \'<a class="nav-link" href="' . addslashes($dolibarr_url) . '" title="Dolibarr"><i class="fa fa-arrow-left"></i> Dolibarr</a>\';
-		nav.insertBefore(li, nav.firstChild);
+	var brand = document.querySelector(".main-nav .navbar-brand");
+	if (brand) {
+		brand.innerHTML = \'<a href="' . addslashes($dolibarr_url) . '" style="text-decoration:none;color:inherit;"><i class="fa fa-arrow-left"></i> Dolibarr</a>\';
 	}
 })();
 </script>';
