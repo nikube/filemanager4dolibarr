@@ -263,7 +263,8 @@ echo '<script>
 (function() {
 	var brand = document.querySelector(".main-nav .navbar-brand");
 	if (brand) {
-		brand.innerHTML = \'<a href="' . addslashes($dolibarr_url) . '" style="text-decoration:none;color:inherit;"><i class="fa fa-arrow-left"></i> Dolibarr</a>\';
+		var original = brand.innerHTML.trim();
+		brand.innerHTML = \'<a href="' . addslashes($dolibarr_url) . '" style="text-decoration:none;color:inherit;"><i class="fa fa-arrow-left"></i> Dolibarr</a> | \' + original;
 	}
 })();
 </script>';
