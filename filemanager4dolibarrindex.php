@@ -171,20 +171,9 @@ if (empty($root_path) || strpos($root_path, '/root') !== false || !is_dir($root_
 	}
 }
 
-// Expand to parent directory (to include html, scripts, etc.)
-if (!empty($root_path) && is_dir($root_path)) {
-	$parent = dirname($root_path);
-	if (is_dir($parent) && is_readable($parent)) {
-		$root_path = $parent;
-	}
-}
-
-// DEBUG: Remove after fixing
-
-
-
-
-
+// SECURITY: Do NOT expand to the parent directory. The file manager must stay
+// confined to the Dolibarr documents root (DOL_DATA_ROOT). Escalating to the
+// parent would expose htdocs/ and conf/conf.php (DB credentials).
 
 // === ROOT URL ===
 $root_url = '';
@@ -194,9 +183,52 @@ $http_host = $_SERVER['HTTP_HOST'];
 $global_readonly = getDolGlobalInt('FILEMANAGER4DOLIBARR_READONLY_MODE') ? true : false;
 
 // === FILE EXTENSIONS ===
-// Allow all file extensions by default
-$allowed_file_extensions = '';
-$allowed_upload_extensions = '';
+// SECURITY: TinyFileManager only supports a *whitelist* (FM_UPLOAD_EXTENSION).
+// An empty value means "allow every extension", which would let an authenticated
+// user upload .php / .phtml / .phar files and achieve remote code execution.
+// We therefore enforce a whitelist of safe office/image/archive document types.
+// Executable extensions (php, php3-8, phtml, phar, phps, pht, cgi, pl, py, sh,
+// htaccess, ...) are intentionally NOT present and can never be uploaded.
+//
+// The list can be overridden by admins via FILEMANAGER4DOLIBARR_UPLOAD_EXTENSIONS,
+// but we defensively strip any dangerous extension from a custom value below.
+$default_upload_extensions = 'pdf,doc,docx,xls,xlsx,ppt,pptx,odt,ods,odp,csv,txt,md,rtf,'
+	.'png,jpg,jpeg,gif,svg,webp,bmp,tiff,ico,'
+	.'zip,rar,7z,gz,tar,tgz,bz2,'
+	.'xml,json,ics,vcf';
+
+// Extensions that must never be accepted for upload (defence in depth).
+$forbidden_upload_extensions = array(
+	'php', 'php3', 'php4', 'php5', 'php7', 'php8', 'phtml', 'phar', 'phps', 'pht',
+	'phhtml', 'cgi', 'pl', 'py', 'sh', 'htaccess', 'htpasswd', 'shtml', 'asp',
+	'aspx', 'jsp', 'exe', 'com', 'bat', 'cmd', 'ps1',
+);
+
+$upload_ext_config = getDolGlobalString('FILEMANAGER4DOLIBARR_UPLOAD_EXTENSIONS');
+$raw_upload_extensions = !empty($upload_ext_config) ? $upload_ext_config : $default_upload_extensions;
+
+// Normalise and filter out any forbidden extension, whatever the source.
+$upload_ext_list = array();
+foreach (explode(',', $raw_upload_extensions) as $ext) {
+	$ext = strtolower(trim($ext, " \t\n\r\0\x0B."));
+	if ($ext === '' || in_array($ext, $forbidden_upload_extensions, true)) {
+		continue;
+	}
+	$upload_ext_list[$ext] = $ext;
+}
+
+// Never allow an empty whitelist (empty => TFM allows everything).
+if (empty($upload_ext_list)) {
+	$upload_ext_list = array_map(function ($e) {
+		return trim($e);
+	}, explode(',', $default_upload_extensions));
+}
+
+$allowed_upload_extensions = implode(',', $upload_ext_list);
+
+// Extensions allowed for create/rename operations. Keep it aligned with the
+// upload whitelist so a benign file cannot be renamed into an executable.
+$allowed_file_extensions = $allowed_upload_extensions;
 
 // === UPLOAD SIZE ===
 $max_upload_size_mb = getDolGlobalInt('FILEMANAGER4DOLIBARR_MAX_UPLOAD_SIZE');
@@ -207,12 +239,25 @@ if ($max_upload_size_mb > 0) {
 }
 
 // === EXCLUDED ITEMS ===
-// User can configure excluded folders
+// SECURITY: always hide sensitive items from listing/download regardless of admin
+// configuration. TFM matches these against the item basename, the "*.ext" pattern
+// or an exact absolute path (see fm_is_exclude_items()).
+$exclude_items = array(
+	'conf.php',       // Dolibarr DB credentials
+	'conf',           // conf/ directory (defence in depth if ever inside root)
+	'.git',           // VCS metadata
+	'.gitignore',
+	'.htaccess',
+	'.htpasswd',
+	'*.sql',          // DB dumps
+	'install.lock',
+);
+
+// Merge any admin-configured extra exclusions (cannot remove the mandatory ones).
 $exclude_config = getDolGlobalString('FILEMANAGER4DOLIBARR_EXCLUDE_ITEMS');
 if (!empty($exclude_config)) {
-	$exclude_items = array_map('trim', explode(',', $exclude_config));
-} else {
-	$exclude_items = array(); // No exclusions by default - full access
+	$exclude_items = array_merge($exclude_items, array_map('trim', explode(',', $exclude_config)));
+	$exclude_items = array_values(array_unique(array_filter($exclude_items)));
 }
 
 // === EDITOR SETTINGS ===
