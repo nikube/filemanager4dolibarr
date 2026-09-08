@@ -1,0 +1,108 @@
+product_id: 2590
+
+name: TinyFileManager4Dolibarr
+slug: filemanager4dolibarr
+module_dir: "."
+
+doli_min: V18
+doli_max: V23
+php_min: "7.1"
+
+price: "0"
+contact: nz@anatoleconseil.com
+categories: [outils-systemes, ged]
+keywords: "file manager, tinyfilemanager, files, documents, upload, edit, zip, ged, explorer, gestionnaire de fichiers, dolibarr"
+validity_days: 730
+
+descriptions:
+  en:
+    short: >-
+      Browse, upload, edit and archive the files of your Dolibarr documents
+      directory from inside Dolibarr, with automatic login. Bundles
+      TinyFileManager. Admin-only by default.
+    long: |
+      <h2>TinyFileManager for Dolibarr</h2>
+      <p>Manage the files of your Dolibarr <code>documents</code> directory
+      without FTP or SSH. This module embeds
+      <a href="https://tinyfilemanager.github.io/">TinyFileManager</a>, the
+      well-known single-file web file manager, and logs you in automatically
+      with your Dolibarr session &mdash; no separate password, nothing else to
+      deploy.</p>
+
+      <h3>Key features</h3>
+      <ul>
+        <li><b>Automatic login</b> &mdash; uses your Dolibarr authentication, admin-only by default (non-admin access can be enabled in setup).</li>
+        <li><b>Full file operations</b> &mdash; browse, upload (drag &amp; drop), download, copy, move, rename, delete, create folders.</li>
+        <li><b>Text editor</b> &mdash; edit text files with syntax highlighting (plain or ACE advanced editor).</li>
+        <li><b>Archives</b> &mdash; create zip archives and extract zip/tar files on the server.</li>
+        <li><b>Search and preview</b> &mdash; search files by name, preview images, PDFs and documents inline.</li>
+        <li><b>Configurable</b> &mdash; root path, read-only mode, max upload size, excluded items, hidden files.</li>
+      </ul>
+
+      <h3>Security</h3>
+      <ul>
+        <li>Confined to the Dolibarr documents directory: <code>htdocs</code> and <code>conf.php</code> are never exposed.</li>
+        <li>Upload of executable files (php, phtml, phar, sh&hellip;) is blocked whatever the configuration.</li>
+        <li>Sensitive items (<code>conf.php</code>, <code>.git</code>, <code>.htaccess</code>, SQL dumps) are always hidden.</li>
+      </ul>
+
+      <h3>What's new in 0.8</h3>
+      <ul>
+        <li>Saving a file the web server cannot write now shows a clear "check permissions / ownership" error instead of failing silently.</li>
+        <li>Security patch from upstream TinyFileManager (null byte in file names).</li>
+      </ul>
+
+      <h3>Requirements</h3>
+      <ul>
+        <li>Dolibarr 18.0 or higher (tested up to V23)</li>
+        <li>PHP 7.1 or higher</li>
+      </ul>
+
+      <h3>License</h3>
+      <p>GPL v3 or later. TinyFileManager is distributed under the MIT license.</p>
+
+  fr:
+    short: >-
+      Parcourez, téléversez, éditez et archivez les fichiers du répertoire
+      documents de Dolibarr depuis Dolibarr, avec connexion automatique.
+      Intègre TinyFileManager. Réservé aux administrateurs par défaut.
+    long: |
+      <h2>TinyFileManager pour Dolibarr</h2>
+      <p>Gérez les fichiers du répertoire <code>documents</code> de Dolibarr
+      sans FTP ni SSH. Ce module intègre
+      <a href="https://tinyfilemanager.github.io/">TinyFileManager</a>, le
+      célèbre gestionnaire de fichiers web mono-fichier, et vous connecte
+      automatiquement avec votre session Dolibarr &mdash; aucun mot de passe
+      supplémentaire, rien d'autre à déployer.</p>
+
+      <h3>Fonctionnalités principales</h3>
+      <ul>
+        <li><b>Connexion automatique</b> &mdash; utilise l'authentification Dolibarr, réservé aux administrateurs par défaut (accès non-admin activable dans la configuration).</li>
+        <li><b>Opérations complètes</b> &mdash; parcourir, téléverser (glisser-déposer), télécharger, copier, déplacer, renommer, supprimer, créer des dossiers.</li>
+        <li><b>Éditeur de texte</b> &mdash; édition des fichiers texte avec coloration syntaxique (éditeur simple ou avancé ACE).</li>
+        <li><b>Archives</b> &mdash; création d'archives zip et extraction de zip/tar sur le serveur.</li>
+        <li><b>Recherche et aperçu</b> &mdash; recherche par nom, aperçu des images, PDF et documents.</li>
+        <li><b>Configurable</b> &mdash; chemin racine, mode lecture seule, taille max d'upload, éléments exclus, fichiers cachés.</li>
+      </ul>
+
+      <h3>Sécurité</h3>
+      <ul>
+        <li>Confiné au répertoire documents de Dolibarr : <code>htdocs</code> et <code>conf.php</code> ne sont jamais exposés.</li>
+        <li>L'upload de fichiers exécutables (php, phtml, phar, sh&hellip;) est bloqué quelle que soit la configuration.</li>
+        <li>Les éléments sensibles (<code>conf.php</code>, <code>.git</code>, <code>.htaccess</code>, dumps SQL) sont toujours masqués.</li>
+      </ul>
+
+      <h3>Nouveautés de la 0.8</h3>
+      <ul>
+        <li>L'enregistrement d'un fichier non inscriptible par le serveur web affiche désormais une erreur claire « vérifier permissions / propriétaire » au lieu d'échouer en silence.</li>
+        <li>Correctif de sécurité repris de TinyFileManager (octet nul dans les noms de fichiers).</li>
+      </ul>
+
+      <h3>Prérequis</h3>
+      <ul>
+        <li>Dolibarr 18.0 ou supérieur (testé jusqu'à la V23)</li>
+        <li>PHP 7.1 ou supérieur</li>
+      </ul>
+
+      <h3>Licence</h3>
+      <p>GPL v3 ou supérieure. TinyFileManager est distribué sous licence MIT.</p>
