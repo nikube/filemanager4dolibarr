@@ -503,9 +503,9 @@ if ((isset($_SESSION[FM_SESSION_ID]['logged'], $auth_users[$_SESSION[FM_SESSION_
         $file_path = $path . '/' . $file;
 
         $writedata = $_POST['content'];
-        $fd = fopen($file_path, "w");
-        $write_results = @fwrite($fd, $writedata);
-        fclose($fd);
+        $fd = @fopen($file_path, "w");
+        $write_results = $fd ? @fwrite($fd, $writedata) : false;
+        if ($fd) fclose($fd);
         if ($write_results === false) {
             header("HTTP/1.1 500 Internal Server Error");
             die("Could Not Write File! - Check Permissions / Ownership");
@@ -2829,7 +2829,7 @@ function fm_enc($text)
  */
 function fm_isvalid_filename($text)
 {
-    return (strpbrk($text, '/?%*:|"<>') === FALSE) ? true : false;
+    return (strpbrk($text, '/?%*:|"<>' . chr(0)) === FALSE) ? true : false;
 }
 
 /**
