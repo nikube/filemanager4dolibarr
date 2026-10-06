@@ -5,7 +5,7 @@ slug: filemanager4dolibarr
 module_dir: "."
 
 doli_min: V18
-doli_max: V23
+doli_max: V24
 php_min: "7.1"
 
 price: "0"
@@ -54,7 +54,7 @@ descriptions:
 
       <h3>Requirements</h3>
       <ul>
-        <li>Dolibarr 18.0 or higher (tested up to V23)</li>
+        <li>Dolibarr 18.0 or higher (tested up to V24)</li>
         <li>PHP 7.1 or higher</li>
       </ul>
 
@@ -100,7 +100,7 @@ descriptions:
 
       <h3>Prérequis</h3>
       <ul>
-        <li>Dolibarr 18.0 ou supérieur (testé jusqu'à la V23)</li>
+        <li>Dolibarr 18.0 ou supérieur (testé jusqu'à la V24)</li>
         <li>PHP 7.1 ou supérieur</li>
       </ul>
 
